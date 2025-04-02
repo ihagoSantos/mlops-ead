@@ -17,7 +17,14 @@ X_train, X_test, y_train, y_test = train_test_split(
     random_state=42
 )
 
-# init a experiment with mlflow
+# Create an experiment with mlflow
+experiment_name = "MLflowExperiment"
+experiment_id = mlflow.create_experiment(experiment_name)
+
+# Define the experiment 
+mlflow.set_experiment(experiment_name)
+
+# init the experiment
 mlflow.start_run()
 
 # create a Logistic Regression model
