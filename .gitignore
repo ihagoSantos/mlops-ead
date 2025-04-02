@@ -1,1 +1,3 @@
 mlops-ead-env
+__pycache__
+mlruns
