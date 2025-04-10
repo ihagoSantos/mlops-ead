@@ -6,7 +6,7 @@ Use pyenv to install this version.
 
 To run the exercises, follow the instructions bellow
 
-## Create Environment
+# Create Environment with venv
 
 Create the virtual environment:
 
@@ -40,3 +40,18 @@ pip install -r requirements.txt
 deactivate
 ```
 
+# Create Environment with conda
+
+```
+conda create -f environment.yml
+```
+
+## Activate environment
+```
+conda activate mlops-ead-env
+```
+
+## Deactivate environment
+```
+conda deactivate
+```
