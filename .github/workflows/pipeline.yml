@@ -30,7 +30,7 @@ jobs:
 
       - name: Test files
         run: |
-          pytest test_train.py
+          pytest ./src/test_train.py
 
   train_pipeline:
     runs-on: ubuntu-latest
