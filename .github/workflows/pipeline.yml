@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      with:
-        fetch-depth: 0
+        with:
+          fetch-depth: 0
 
       - name: Step up Python 3.11
         uses: actions/setup-python@v1
