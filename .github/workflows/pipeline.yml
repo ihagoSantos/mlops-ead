@@ -52,7 +52,7 @@ jobs:
 
       - name: Train Model
         run: |
-          python train.py
+          python .src/train.py
   
   build_image:
     runs-on: ubuntu-latest
