@@ -55,3 +55,16 @@ conda activate mlops-ead-env
 ```
 conda deactivate
 ```
+
+# API
+
+## Execução
+
+Para executar a API na porta 8000, é necessário executar o seguinte comando no terminal:
+```
+uvicorn src.main:app --reload
+```
+
+## Documentação
+
+A documentação pode ser encontrada na rota */docs*.
