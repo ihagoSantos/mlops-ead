@@ -14,23 +14,27 @@ class FetalHealthDTO(BaseModel):
     uterine_contractions: float
     severe_decelerations: float
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    """
-    Função chamada ao inicializar a aplicação. Ela carregará o modelo em memória
-    """
-    global model
-    model = load_model()
-    yield
-
 app = FastAPI(
     title="Fetal Health API",
     openapi_tags=[
         { "name":"Health", "description":"GET API Health" },
         { "name":"Prediction", "description":"Model Prediction" },
     ],
-    lifespan=lifespan
 )
+@app.on_event(event_type='startup')
+def startup_event():
+    """
+    A function that is called when the application starts up. It loads a model into the
+    global variable `model`.
+
+    Parameters:
+        None
+
+    Returns:
+        None
+    """
+    global model
+    model = load_model()
 
 def load_model():
     try:
@@ -66,9 +70,10 @@ def predict(request: FetalHealthDTO):
         print("request:", request)
         
         global model
-
+        print(model)
         if model is None:
             raise HTTPException(status_code=422, detail="Modelo não foi carregado.")
+        
         received_data = np.array([
             request.accelerations,
             request.fetal_movement,
@@ -85,7 +90,7 @@ def predict(request: FetalHealthDTO):
             "prediction": {
                 "class": str(max_index),
                 "probability": str(prediction[0][max_index])
-            }
+            }   
         }
     except Exception as e:
         print("Erro:", str(e))

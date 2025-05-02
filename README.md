@@ -58,13 +58,37 @@ conda deactivate
 
 # API
 
-## Execução
+## Execution
 
 Para executar a API na porta 8000, é necessário executar o seguinte comando no terminal:
 ```
 uvicorn src.main:app --reload
 ```
 
-## Documentação
+## Documentation
 
 A documentação pode ser encontrada na rota */docs*.
+
+## Build docker image
+
+```
+docker build --no-cache -t model_api .
+```
+
+## List images
+
+```
+docker image list
+```
+
+## Running image
+
+### Add permition to script (one time only)
+```
+chmod +x run_api.sh
+```
+
+### Running script
+```
+./run_api.sh
+```
