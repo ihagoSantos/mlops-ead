@@ -92,3 +92,10 @@ chmod +x run_api.sh
 ```
 ./run_api.sh
 ```
+
+# Load Test
+
+## Running load test
+```
+locust
+```
